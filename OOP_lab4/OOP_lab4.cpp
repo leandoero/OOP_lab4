@@ -8,6 +8,10 @@ using namespace std;
 
 пара это вектор для
 
+ создание объекта на основе другого это конструктор копирования
+ если просто уже два существовали и надо скопировать характеристики то это присваивание
+ если хотим вернуть того который существовал до этого то возвращаем по ссылке
+
 в производном умножение и деление
 
 */
@@ -37,47 +41,24 @@ public:
 	double distanceToOrigin();
 	double distanceTo(const Pair&);
 
+	friend ostream& operator<<(ostream&, Pair&);
+
 	~Pair();
-};
-
-class Complex : public Pair {
-public:
-
 };
 
 Pair& Pair::operator=(const Pair& other) {
 	if (this == &other) {
-		return *this;
-	}
-	
-	if (x) {
-		delete x;
-		x = nullptr;
-	}
-	if (y) {
-		delete y;
-		y = nullptr;
-	}
-
-	x = new double{ *other.x };
-	y = new double{ *other.y };
-
-	return *this;
-
-	/*
-	Complex& Complex::operator=(const Complex& other) {
-	if (*this == other) {
 		return	*this;
 	}
-	*real = *other.real;
-	*imag = *other.imag;
+	*x = *other.x;
+	*y = *other.y;
 
-	return *this;	*/
+	return *this;
 }
 
 Pair::Pair(const Pair& other) {
-	x = new double { *other.x };
-	y = new double { *other.y };
+	x = new double{ *other.x };
+	y = new double{ *other.y };
 }
 
 void Pair::multiplyPairByScalar(double scalar) {
@@ -135,14 +116,26 @@ Pair::~Pair() {
 	x = nullptr;
 	y = nullptr;
 }
+ostream& operator<<(ostream& stream, Pair& pair) {
+	stream << *pair.x << " " << *pair.y;
+	return stream;
+}
 
 void menu() {
 	system("cls");
 
 }
+class Complex : public Pair {
+public:
+	Complex(double real)
+	Complex multiOfComplex();
+};
 
-int main() {
-
-	return 0;
+Pair Complex::multiOfComplex() {
+	Pair pair{};
+	return pair;
 }
 
+int main() {
+	return 0;
+}
