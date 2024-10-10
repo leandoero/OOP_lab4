@@ -127,7 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classComplex.cpp" />
+    <ClCompile Include="classPair.cpp" />
     <ClCompile Include="OOP_lab4.cpp" />
+    <ClCompile Include="otherFunc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="classComplex.h" />
+    <ClInclude Include="classPair.h" />
+    <ClInclude Include="otherFunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
