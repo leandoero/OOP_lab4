@@ -7,4 +7,5 @@ public:
 	Complex multiOfComplex(const Complex&);
 	Complex divideOfComplex(const Complex&);
 	double Module();
+	friend ostream& operator<<(ostream&, Complex&);
 };
